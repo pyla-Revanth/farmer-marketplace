@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Produce Catalog, Basket &amp; Orders — Smart Farmer Marketplace</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- SITE NAVIGATION -->
+<nav class="site-nav">
+  <div class="wrap nav-container">
+    <a href="index.html" class="brand-logo">
+      <div class="brand-icon-box">🌱</div>
+      Smart Farmer
+      <span class="brand-tag">Direct</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="javascript:void(0)" class="nav-link active" id="navLinkCatalog" onclick="switchProductTab('catalog')">Marketplace</a>
+      <a href="javascript:void(0)" class="nav-link" id="navLinkWishlist" onclick="switchProductTab('wishlist')">
+        ❤️ Wishlist <span id="navWishCount" class="nav-badge gold">0</span>
+      </a>
+      <a href="javascript:void(0)" class="nav-link" id="navLinkCart" onclick="switchProductTab('cart')">
+        🛒 Basket <span id="navCartCount" class="nav-badge">0</span>
+      </a>
+      <a href="javascript:void(0)" class="nav-link" id="navLinkOrders" onclick="switchProductTab('orders')">📦 My Orders</a>
+    </div>
+
+    <div id="navAuthSlot" style="display:flex;align-items:center;gap:12px;"></div>
+  </div>
+</nav>
+
+<!-- MAIN APP CONTAINER -->
+<main class="wrap section-spacing">
+
+  <!-- TAB SELECTION CHIPS -->
+  <div style="display:flex;gap:10px;margin-bottom:32px;border-bottom:1px solid var(--card-border);padding-bottom:14px;overflow-x:auto;">
+    <button type="button" id="tabBtnCatalog" class="btn btn-primary" onclick="switchProductTab('catalog')">
+      🌿 All Produce Catalog
+    </button>
+    <button type="button" id="tabBtnCart" class="btn btn-outline" onclick="switchProductTab('cart')">
+      🛒 Fresh Basket
+    </button>
+    <button type="button" id="tabBtnWishlist" class="btn btn-outline" onclick="switchProductTab('wishlist')">
+      ❤️ Saved Wishlist
+    </button>
+    <button type="button" id="tabBtnOrders" class="btn btn-outline" onclick="switchProductTab('orders')">
+      📦 Order Tracking
+    </button>
+  </div>
+
+  <!-- SINGLE PRODUCT DETAIL VIEW (IF ID PRESENT) -->
+  <div id="singleProductView" style="display:none;margin-bottom:40px;">
+    <div id="singleProductContainer"></div>
+  </div>
+
+  <!-- TAB 1: ALL PRODUCE CATALOG -->
+  <section id="tabPaneCatalog">
+    <div class="section-head">
+      <div>
+        <h1 class="section-head-title">Fresh Farm Marketplace</h1>
+        <p class="section-head-subtitle">Authentic seasonal vegetables, fruits, grains and farm dairy with actual field photography</p>
+      </div>
+
+      <!-- Sorting Filter -->
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:13px;font-weight:600;color:#64748b;">Sort:</span>
+        <select id="sortFilter" class="filter-select">
+          <option value="default">Featured First</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+          <option value="name">Alphabetical</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Live Search -->
+    <div class="filter-search-bar" style="margin-bottom:20px;">
+      <div class="search-input-wrapper">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="searchInput" type="text" placeholder="Search tomatoes, mangoes, organic rice, fresh milk, carrots..." />
+      </div>
+    </div>
+
+    <!-- Category filter chips -->
+    <div id="categoryChips" class="chips-row"></div>
+
+    <!-- Catalog Grid -->
+    <div id="productGrid" class="products-grid"></div>
+  </section>
+
+  <!-- TAB 2: SHOPPING BASKET / CART -->
+  <section id="tabPaneCart" style="display:none;">
+    <div class="section-head">
+      <div>
+        <h1 class="section-head-title">Your Fresh Basket</h1>
+        <p class="section-head-subtitle">Farm-fresh produce reserved directly from local grower stocks</p>
+      </div>
+    </div>
+
+    <div class="cart-layout">
+      <!-- Item list -->
+      <div>
+        <div id="cartBody"></div>
+        <div id="cartEmpty" style="display:none;text-align:center;padding:50px 20px;background:white;border-radius:var(--radius-lg);border:1px solid var(--card-border);">
+          <div style="font-size:36px;margin-bottom:12px;">🛒</div>
+          <h3 style="font-size:1.3rem;margin-bottom:6px;">Your basket is empty</h3>
+          <p style="color:var(--text-muted);font-size:14px;max-width:360px;margin:0 auto 16px;">Pick freshly harvested vegetables, seasonal fruits, and organic dairy from local farms.</p>
+          <button class="btn btn-primary" onclick="switchProductTab('catalog')">Browse Farm Produce 🌿</button>
+        </div>
+      </div>
+
+      <!-- Order Summary Card -->
+      <div class="order-summary-card">
+        <h3 style="font-size:1.3rem;margin-bottom:16px;color:var(--primary-dark);">Order Summary</h3>
+        
+        <div class="summary-row">
+          <span>Produce Subtotal</span>
+          <strong id="cartSubtotal">₹0</strong>
+        </div>
+        <div class="summary-row">
+          <span>Delivery Charge</span>
+          <span id="cartDeliveryFee" style="color:var(--primary);font-weight:700;">FREE</span>
+        </div>
+        <div class="summary-row">
+          <span>Farmer Fair-Share Guarantee</span>
+          <span style="color:#15803d;font-weight:600;">100% Direct</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total Amount</span>
+          <span id="cartTotal" style="color:var(--primary-dark);">₹0</span>
+        </div>
+
+        <div style="font-size:12px;color:#64748b;margin:16px 0;line-height:1.4;">
+          🚚 Orders above ₹300 qualify for free morning delivery directly from the fields.
+        </div>
+
+        <button class="btn btn-primary btn-block btn-lg" onclick="openCheckoutModal()">
+          Proceed to Checkout &rarr;
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 3: WISHLIST -->
+  <section id="tabPaneWishlist" style="display:none;">
+    <div class="section-head">
+      <div>
+        <h1 class="section-head-title">Saved Wishlist</h1>
+        <p class="section-head-subtitle">Crops and harvests you are watching for upcoming meals</p>
+      </div>
+    </div>
+    <div id="wishlistContainer" class="products-grid"></div>
+  </section>
+
+  <!-- TAB 4: ORDERS TRACKING -->
+  <section id="tabPaneOrders" style="display:none;">
+    <div class="section-head">
+      <div>
+        <h1 class="section-head-title">Order History &amp; Live Tracking</h1>
+        <p class="section-head-subtitle">Follow your crops from early morning harvest to doorstep delivery</p>
+      </div>
+    </div>
+    <div id="ordersContainer"></div>
+  </section>
+</main>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" class="modal-overlay" style="display:none;">
+  <div class="modal-dialog">
+    <button type="button" class="modal-close-btn" onclick="closeCheckoutModal()">×</button>
+    
+    <div class="modal-header">
+      <h3>Complete Your Farm Order</h3>
+      <p>Enter your delivery details to dispatch your fresh morning harvest.</p>
+    </div>
+
+    <form id="checkoutForm" onsubmit="handlePlaceOrder(event)">
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input id="orderCustName" class="form-input" placeholder="e.g. Priya Nair" required />
+      </div>
+
+      <div class="form-group">
+        <label>Contact Phone Number *</label>
+        <input id="orderCustPhone" type="tel" class="form-input" placeholder="e.g. +91 98450 12345" required />
+      </div>
+
+      <div class="form-group">
+        <label>Delivery Address *</label>
+        <textarea id="orderCustAddress" class="form-textarea" rows="3" placeholder="House/Flat number, Street, Landmark, Pincode" required></textarea>
+      </div>
+
+      <div class="form-row" style="margin-bottom:16px;">
+        <div class="form-group">
+          <label>Preferred Delivery Slot</label>
+          <select id="orderCustSlot" class="form-select">
+            <option>Early Morning (6:30 AM - 9:30 AM)</option>
+            <option>Afternoon (12:00 PM - 3:00 PM)</option>
+            <option>Evening Drop (5:00 PM - 8:00 PM)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Payment Method</label>
+          <select id="orderPaymentMethod" class="form-select">
+            <option>Cash on Delivery (Pay after inspecting produce)</option>
+            <option>UPI / Online Transfer (Demo)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:var(--radius-sm);padding:12px;margin-bottom:20px;font-size:12.5px;color:#166534;">
+        🌿 <strong>Freshness Guarantee:</strong> If any produce fails your quality expectations at delivery, the farmer provides an instant zero-hassle replacement or refund.
+      </div>
+
+      <div style="display:flex;gap:12px;justify-content:flex-end;">
+        <button type="button" class="btn btn-outline" onclick="closeCheckoutModal()">Cancel</button>
+        <button type="submit" class="btn btn-primary">Confirm &amp; Place Order</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL MODAL (FOR CATALOG QUICK VIEW) -->
+<div id="productModal" class="modal-overlay" style="display:none;">
+  <div class="modal-dialog large" style="position:relative;">
+    <button type="button" class="modal-close-btn" onclick="closeProductModal()">×</button>
+    <div id="productModalContent"></div>
+  </div>
+</div>
+
+<!-- SITE FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>&copy; 2026 Smart Farmer Marketplace &bull; Fresh from the Farm, Direct to Your Home.</span>
+      <span>Direct grower-to-consumer agricultural network</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+  renderNavAuth("navAuthSlot");
+  initSearchAndFilters();
+  renderChips();
+  renderGrid("productGrid");
+  renderCart();
+  renderWishlistGrid();
+  renderOrdersList();
+
+  function switchProductTab(tab) {
+    const panes = ["catalog", "cart", "wishlist", "orders"];
+    panes.forEach(p => {
+      const pane = document.getElementById("tabPane" + p.charAt(0).toUpperCase() + p.slice(1));
+      const btn = document.getElementById("tabBtn" + p.charAt(0).toUpperCase() + p.slice(1));
+      const navLink = document.getElementById("navLink" + p.charAt(0).toUpperCase() + p.slice(1));
+
+      if (pane) pane.style.display = p === tab ? "block" : "none";
+      if (btn) {
+        btn.className = p === tab ? "btn btn-primary" : "btn btn-outline";
+      }
+      if (navLink) {
+        navLink.classList.toggle("active", p === tab);
+      }
+    });
+
+    if (tab === "cart") renderCart();
+    if (tab === "wishlist") renderWishlistGrid();
+    if (tab === "orders") renderOrdersList();
+    if (tab === "catalog") renderGrid("productGrid");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // Handle URL hash or param
+  const hash = window.location.hash.replace("#", "");
+  if (hash === "cart" || hash === "wishlist" || hash === "orders") {
+    switchProductTab(hash);
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const prodId = params.get("id");
+  if (prodId) {
+    openProductModal(Number(prodId));
+  }
+  const catParam = params.get("cat");
+  if (catParam) {
+    activeCategory = catParam;
+    renderChips();
+    renderGrid("productGrid");
+  }
+
+  // Backdrop modal close
+  const checkoutModalEl = document.getElementById("checkoutModal");
+  if (checkoutModalEl) {
+    checkoutModalEl.addEventListener("click", (e) => {
+      if (e.target === checkoutModalEl) closeCheckoutModal();
+    });
+  }
+  const prodModalEl = document.getElementById("productModal");
+  if (prodModalEl) {
+    prodModalEl.addEventListener("click", (e) => {
+      if (e.target === prodModalEl) closeProductModal();
+    });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeCheckoutModal();
+      closeProductModal();
+    }
+  });
+</script>
+</body>
+</html>

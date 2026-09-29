@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign In or Register — Smart Farmer Marketplace</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background:linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f8fafc 100%);min-height:100vh;display:flex;flex-direction:column;">
+
+<header style="padding:20px 24px;">
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;">
+    <a href="index.html" class="brand-logo">
+      <div class="brand-icon-box">🌱</div>
+      Smart Farmer
+    </a>
+    <a href="index.html" class="btn btn-sm btn-outline">&larr; Back to Marketplace</a>
+  </div>
+</header>
+
+<main style="flex:1;display:flex;align-items:center;justify-content:center;padding:24px;">
+  <div style="background:white;border:1px solid var(--card-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-xl);width:100%;max-width:480px;padding:36px;position:relative;">
+    
+    <div style="text-align:center;margin-bottom:26px;">
+      <span style="font-size:32px;">👨‍🌾</span>
+      <h1 style="font-size:1.8rem;color:var(--primary-dark);margin:6px 0 4px;">Direct Farm Portal</h1>
+      <p style="font-size:13.5px;color:var(--text-muted);">Direct from local soil straight to your table</p>
+    </div>
+
+    <!-- TAB SWITCHER -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;">
+      <button id="tabLogin" class="btn btn-primary" onclick="switchForm('login')">Sign In</button>
+      <button id="tabRegister" class="btn btn-outline" onclick="switchForm('register')">Create Account</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <form id="loginPane" onsubmit="handleLogin(event)">
+      <div id="loginError" style="display:none;background:#fee2e2;color:#dc2626;padding:10px 14px;border-radius:var(--radius-sm);margin-bottom:16px;font-size:13px;font-weight:600;"></div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input id="loginEmail" type="email" class="form-input" placeholder="e.g. ramesh@farm.com" required />
+      </div>
+
+      <div class="form-group" style="margin-bottom:20px;">
+        <label>Password</label>
+        <input id="loginPassword" type="password" class="form-input" placeholder="••••••••" required />
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-bottom:20px;">
+        Sign In to Portal &rarr;
+      </button>
+
+      <!-- QUICK 1-CLICK DEMO LOGINS -->
+      <div style="background:#f8fafc;border:1px solid var(--card-border);border-radius:var(--radius-md);padding:14px;margin-top:20px;">
+        <div style="font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;margin-bottom:8px;text-align:center;">
+          ⚡ 1-Click Demo Evaluation Logins
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <button type="button" class="btn btn-sm btn-outline-primary" onclick="quickLogin('ramesh@farm.com')">
+            👨‍🌾 Farmer Ramesh
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-primary" onclick="quickLogin('suresh@farm.com')">
+            👨‍🌾 Farmer Suresh
+          </button>
+        </div>
+        <button type="button" class="btn btn-sm btn-outline" style="width:100%;margin-top:8px;" onclick="quickLogin('priya@buyer.com')">
+          🛒 Customer Priya Nair
+        </button>
+      </div>
+    </form>
+
+    <!-- REGISTER FORM -->
+    <form id="registerPane" style="display:none;" onsubmit="handleRegister(event)">
+      <div id="regError" style="display:none;background:#fee2e2;color:#dc2626;padding:10px 14px;border-radius:var(--radius-sm);margin-bottom:16px;font-size:13px;font-weight:600;"></div>
+
+      <div class="form-group">
+        <label>I Want to Join as</label>
+        <div class="role-toggle">
+          <button type="button" data-role="customer" class="active">🛒 Customer / Buyer</button>
+          <button type="button" data-role="farmer">👨‍🌾 Farmer / Producer</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input id="regName" type="text" class="form-input" placeholder="e.g. Ramesh Yadav" required />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input id="regEmail" type="email" class="form-input" placeholder="you@farm.com" required />
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input id="regPhone" type="tel" class="form-input" placeholder="+91 98450 12345" required />
+        </div>
+      </div>
+
+      <div class="form-row" style="margin-bottom:20px;">
+        <div class="form-group">
+          <label>Password (min 6)</label>
+          <input id="regPassword" type="password" class="form-input" placeholder="••••••••" required />
+        </div>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input id="regConfirm" type="password" class="form-input" placeholder="••••••••" required />
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block btn-lg">
+        Create My Account &rarr;
+      </button>
+    </form>
+  </div>
+</main>
+
+<script src="js/data.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  initRoleToggle();
+  const user = currentUser();
+  if (user) {
+    window.location.href = user.role === "farmer" ? "farmer-dashboard.html" : "index.html";
+  }
+</script>
+</body>
+</html>

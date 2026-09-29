@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Farmer Dashboard — Smart Farmer Marketplace</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="dashboard-shell">
+  <!-- SIDEBAR -->
+  <aside class="dashboard-sidebar">
+    <a href="index.html" class="brand-logo" style="margin-bottom:28px;">
+      <div class="brand-icon-box">🌱</div>
+      Smart Farmer
+    </a>
+    
+    <div style="background:rgba(255,255,255,0.08);padding:14px;border-radius:var(--radius-md);margin-bottom:24px;">
+      <div style="font-size:12px;color:#86efac;font-weight:700;text-transform:uppercase;">Farmer Profile</div>
+      <div id="sidebarFarmerName" style="font-size:15px;font-weight:700;color:white;margin-top:2px;">Loading...</div>
+      <div style="font-size:12px;color:#cbd5e1;">Direct Producer</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="farmer-dashboard.html" class="sidebar-link active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a href="#addProduct" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        Add New Product
+      </a>
+      <a href="manage-products.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        My Products
+      </a>
+      <a href="manage-products.html#orders" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        Customer Orders
+      </a>
+      <a href="index.html" class="sidebar-link" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View Live Store
+      </a>
+    </nav>
+
+    <div style="margin-top:auto;border-top:1px solid rgba(255,255,255,0.12);padding-top:16px;">
+      <a href="#" id="logoutLink" class="sidebar-link" style="color:#fca5a5;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:14px;">
+      <div>
+        <h1 style="font-size:2rem;color:var(--primary-dark);">Farmer Stall Overview</h1>
+        <p style="color:var(--text-muted);font-size:14px;">Welcome back, <strong id="farmerName"></strong>! Manage your fresh harvest listings and track orders.</p>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <a href="manage-products.html" class="btn btn-outline">Manage Listings</a>
+        <a href="#addProduct" class="btn btn-primary">+ Add Produce</a>
+      </div>
+    </div>
+
+    <!-- KPI STATS -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap green">📦</div>
+        <div>
+          <div class="kpi-value" id="statProducts">0</div>
+          <div class="kpi-label">Active Listings</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap blue">🛍️</div>
+        <div>
+          <div class="kpi-value" id="statOrders">0</div>
+          <div class="kpi-label">Total Orders</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap gold">💰</div>
+        <div>
+          <div class="kpi-value" id="statRevenue">₹0</div>
+          <div class="kpi-label">Delivered Revenue</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap red">⚠️</div>
+        <div>
+          <div class="kpi-value" id="statLowStock">0</div>
+          <div class="kpi-label">Low Stock Alerts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECENT LISTINGS -->
+    <div style="margin-bottom:36px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+        <h3 style="font-size:1.3rem;">Your Recent Farm Produce</h3>
+        <a href="manage-products.html" style="font-size:13px;font-weight:700;color:var(--primary);">View all &rarr;</a>
+      </div>
+      <div id="recentListings"></div>
+    </div>
+
+    <!-- ADD PRODUCT FORM WITH IMAGE UPLOAD -->
+    <div id="addProduct" class="table-card" style="padding:32px;max-width:820px;">
+      <div style="margin-bottom:22px;border-bottom:1px solid var(--card-border);padding-bottom:16px;">
+        <h2 style="font-size:1.5rem;color:var(--primary-dark);">Add New Harvest to Marketplace</h2>
+        <p style="color:var(--text-muted);font-size:13.5px;">Upload actual photographs of your produce so customers see genuine farm freshness.</p>
+      </div>
+
+      <form id="addProductForm">
+        <div id="addProductError" style="display:none;background:#fee2e2;color:#dc2626;padding:10px 14px;border-radius:var(--radius-sm);margin-bottom:16px;font-size:13px;font-weight:600;"></div>
+
+        <div class="form-row" style="margin-bottom:16px;">
+          <div class="form-group" style="flex:2;">
+            <label>Product Name *</label>
+            <input id="pName" class="form-input" placeholder="e.g. Fresh Red Tomatoes" required />
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label>Category *</label>
+            <select id="pCategory" class="form-select">
+              <option value="Vegetables">Vegetables</option>
+              <option value="Fruits">Fruits</option>
+              <option value="Grains">Grains & Rice</option>
+              <option value="Pulses">Pulses & Dals</option>
+              <option value="Dairy">Farm Fresh Dairy</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-bottom:16px;">
+          <div class="form-group">
+            <label>Price (₹) *</label>
+            <input id="pPrice" type="number" min="1" class="form-input" placeholder="e.g. 40" required />
+          </div>
+          <div class="form-group">
+            <label>Available Stock *</label>
+            <input id="pStock" type="number" min="1" class="form-input" placeholder="e.g. 100" required />
+          </div>
+          <div class="form-group">
+            <label>Measurement Unit</label>
+            <select id="pUnit" class="form-select">
+              <option value="kg">kg (Kilogram)</option>
+              <option value="bunch">bunch</option>
+              <option value="litre">litre</option>
+              <option value="dozen">dozen</option>
+              <option value="box">box / punnet</option>
+              <option value="piece">piece</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Product Description & Freshness Details</label>
+          <textarea id="pDescription" class="form-textarea" rows="2" placeholder="e.g. Naturally ripened, picked fresh at dawn from organic compost soil..."></textarea>
+        </div>
+
+        <!-- IMAGE UPLOAD & PRESET SECTION -->
+        <div class="form-group" style="margin-top:20px;padding-top:16px;border-top:1px dashed var(--card-border);">
+          <label style="font-size:14px;color:var(--primary-dark);font-weight:700;">
+            📸 Actual Product Image (Required)
+          </label>
+          <p style="font-size:12.5px;color:var(--text-muted);margin-bottom:12px;">
+            Choose a quick sample photo, upload your own camera photo, or paste a photo link.
+          </p>
+
+          <!-- 1-Click Quick Presets -->
+          <div style="margin-bottom:14px;">
+            <div style="font-size:12px;font-weight:700;color:#475569;margin-bottom:6px;">1-Click Popular Produce Photos:</div>
+            <div id="presetImagesContainer" class="preset-images-strip"></div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 200px;gap:20px;align-items:start;">
+            <div>
+              <div style="margin-bottom:12px;">
+                <label style="font-size:12px;font-weight:600;color:#64748b;">Option A: Upload Image File from Computer / Phone</label>
+                <input type="file" id="pImageFile" accept="image/*" class="form-input" style="padding:7px;" />
+              </div>
+              <div>
+                <label style="font-size:12px;font-weight:600;color:#64748b;">Option B: Or Direct Image Web URL</label>
+                <input type="url" id="pImageUrl" class="form-input" placeholder="https://images.unsplash.com/..." />
+              </div>
+            </div>
+
+            <!-- Live Preview -->
+            <div>
+              <div style="font-size:12px;font-weight:700;color:#475569;margin-bottom:4px;">Live Preview:</div>
+              <div class="image-preview-box" style="height:140px;">
+                <img id="pImagePreview" src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=800&q=80" alt="Preview" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;display:flex;gap:12px;">
+          <button type="submit" class="btn btn-primary btn-lg">Publish Harvest to Marketplace</button>
+          <button type="reset" class="btn btn-outline">Clear Form</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/dashboard.js"></script>
+<script>
+  const user = requireFarmer();
+  if (user) {
+    document.getElementById("farmerName").textContent = user.name;
+    document.getElementById("sidebarFarmerName").textContent = user.name;
+    initImageUploader();
+    renderDashboardStats(user);
+    
+    document.getElementById("addProductForm").addEventListener("submit", (e) => handleAddProduct(e, user));
+    document.getElementById("logoutLink").addEventListener("click", (e) => {
+      e.preventDefault();
+      logout();
+    });
+  }
+</script>
+</body>
+</html>
