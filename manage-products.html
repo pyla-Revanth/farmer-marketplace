@@ -4,13 +4,19 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Manage Products &amp; Orders — Smart Farmer Marketplace</title>
+<meta name="description" content="Manage your listed farm produce, update inventory and prices, and review incoming orders on Smart Farmer Marketplace." />
+<meta property="og:title" content="Manage Products &amp; Orders — Smart Farmer Marketplace" />
+<meta property="og:description" content="Update prices, crop photos, stock levels, and dispatch customer orders directly." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Smart Farmer Marketplace" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>" />
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <div class="dashboard-shell">
-  <!-- SIDEBAR -->
-  <aside class="dashboard-sidebar">
+  <!-- Sidebar navigation -->
+  <aside class="dashboard-sidebar" aria-label="Farmer sidebar">
     <a href="index.html" class="brand-logo" style="margin-bottom:28px;">
       <div class="brand-icon-box">🌱</div>
       Smart Farmer
@@ -22,38 +28,38 @@
       <div style="font-size:12px;color:#cbd5e1;">Manage Inventory &amp; Sales</div>
     </div>
 
-    <nav class="sidebar-nav">
+    <nav class="sidebar-nav" aria-label="Dashboard links">
       <a href="farmer-dashboard.html" class="sidebar-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Dashboard
       </a>
       <a href="farmer-dashboard.html#addProduct" class="sidebar-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
         Add New Product
       </a>
       <a href="manage-products.html" class="sidebar-link active">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         My Products
       </a>
       <a href="#orders" class="sidebar-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
         Customer Orders
       </a>
-      <a href="index.html" class="sidebar-link" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      <a href="index.html" class="sidebar-link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         View Live Store
       </a>
     </nav>
 
     <div style="margin-top:auto;border-top:1px solid rgba(255,255,255,0.12);padding-top:16px;">
       <a href="#" id="logoutLink" class="sidebar-link" style="color:#fca5a5;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
         Sign Out
       </a>
     </div>
   </aside>
 
-  <!-- MAIN CONTENT -->
+  <!-- Main content -->
   <main class="dashboard-main">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:14px;">
       <div>
@@ -65,7 +71,7 @@
       </div>
     </div>
 
-    <!-- MY PRODUCTS SECTION -->
+    <!-- Products section -->
     <div class="table-card">
       <div style="padding:20px 24px;border-bottom:1px solid var(--card-border);display:flex;justify-content:space-between;align-items:center;">
         <div>
@@ -90,7 +96,7 @@
       </div>
     </div>
 
-    <!-- ORDERS MANAGEMENT SECTION -->
+    <!-- Orders management section -->
     <div id="orders" class="table-card" style="margin-top:40px;">
       <div style="padding:20px 24px;border-bottom:1px solid var(--card-border);">
         <h2 style="font-size:1.35rem;color:var(--primary-dark);">Incoming Customer Orders</h2>
@@ -116,26 +122,24 @@
   </main>
 </div>
 
-<!-- ============================================================
-     EDIT PRODUCT MODAL (FIXED: Hidden by default, Cancel works)
-     ============================================================ -->
-<div id="editModal" class="modal-overlay" style="display:none;">
+<!-- Edit produce modal -->
+<div id="editModal" class="modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
   <div class="modal-dialog large">
     <button type="button" class="modal-close-btn" id="modalCloseX" aria-label="Close modal">×</button>
     
     <div class="modal-header">
-      <h3>Edit Farm Produce</h3>
+      <h3 id="editModalTitle">Edit Farm Produce</h3>
       <p>Update produce details, price, available quantity, or replace the product image.</p>
     </div>
 
     <form id="editForm">
       <div class="form-row" style="margin-bottom:14px;">
         <div class="form-group" style="flex:2;">
-          <label>Produce Name *</label>
+          <label for="editName">Produce Name *</label>
           <input id="editName" class="form-input" required />
         </div>
         <div class="form-group" style="flex:1;">
-          <label>Category *</label>
+          <label for="editCategory">Category *</label>
           <select id="editCategory" class="form-select">
             <option value="Vegetables">Vegetables</option>
             <option value="Fruits">Fruits</option>
@@ -148,42 +152,42 @@
 
       <div class="form-row" style="margin-bottom:14px;">
         <div class="form-group">
-          <label>Price (₹) *</label>
+          <label for="editPrice">Price (₹) *</label>
           <input id="editPrice" type="number" min="1" class="form-input" required />
         </div>
         <div class="form-group">
-          <label>Available Stock *</label>
+          <label for="editStock">Available Stock *</label>
           <input id="editStock" type="number" min="0" class="form-input" required />
         </div>
         <div class="form-group">
-          <label>Unit (kg, bunch, litre, etc.)</label>
+          <label for="editUnit">Unit (kg, bunch, litre, etc.)</label>
           <input id="editUnit" class="form-input" placeholder="kg" />
         </div>
       </div>
 
       <div class="form-group">
-        <label>Description</label>
+        <label for="editDescription">Description</label>
         <textarea id="editDescription" class="form-textarea" rows="2"></textarea>
       </div>
 
-      <!-- EDIT IMAGE SECTION -->
+      <!-- Update produce image -->
       <div class="form-group" style="margin-top:16px;padding-top:16px;border-top:1px dashed var(--card-border);">
         <label style="font-size:13.5px;color:var(--primary-dark);font-weight:700;">
           📸 Update Produce Photograph
         </label>
         
-        <!-- Quick 1-click Preset thumbnails -->
+        <!-- Preset thumbnails -->
         <div style="font-size:12px;font-weight:600;color:#64748b;margin-top:6px;margin-bottom:4px;">Quick Select Preset Photo:</div>
         <div id="editPresetImagesContainer" class="preset-images-strip"></div>
 
         <div style="display:grid;grid-template-columns:1fr 160px;gap:18px;margin-top:12px;align-items:start;">
           <div>
             <div style="margin-bottom:10px;">
-              <label style="font-size:12px;color:#64748b;">Upload New Image File:</label>
+              <label for="editImageFile" style="font-size:12px;color:#64748b;">Upload New Image File:</label>
               <input type="file" id="editImageFile" accept="image/*" class="form-input" style="padding:6px;" />
             </div>
             <div>
-              <label style="font-size:12px;color:#64748b;">Or Image URL:</label>
+              <label for="editImageUrl" style="font-size:12px;color:#64748b;">Or Image URL:</label>
               <input type="url" id="editImageUrl" class="form-input" placeholder="https://images.unsplash.com/..." />
             </div>
           </div>
@@ -197,7 +201,7 @@
         </div>
       </div>
 
-      <!-- ACTION BUTTONS: Cancel and Save changes -->
+      <!-- Form actions -->
       <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:24px;border-top:1px solid var(--card-border);padding-top:16px;">
         <button type="button" class="btn btn-outline" id="cancelEditBtn">Cancel</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
@@ -217,22 +221,18 @@
     renderMyOrders(user);
     initEditPresets();
 
-    // Form submit
     document.getElementById("editForm").addEventListener("submit", (e) => saveEditedProduct(e, user));
 
-    // Cancel Button Click
     document.getElementById("cancelEditBtn").addEventListener("click", (e) => {
       e.preventDefault();
       closeEditModal();
     });
 
-    // Close 'X' Button Click
     document.getElementById("modalCloseX").addEventListener("click", (e) => {
       e.preventDefault();
       closeEditModal();
     });
 
-    // Backdrop Click
     const modalEl = document.getElementById("editModal");
     modalEl.addEventListener("click", (e) => {
       if (e.target === modalEl) {
@@ -240,14 +240,12 @@
       }
     });
 
-    // Escape Key Handler
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && modalEl.style.display !== "none") {
         closeEditModal();
       }
     });
 
-    // Logout
     document.getElementById("logoutLink").addEventListener("click", (e) => {
       e.preventDefault();
       logout();

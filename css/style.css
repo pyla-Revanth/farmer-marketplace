@@ -1,34 +1,29 @@
-/* ============================================================
-   Smart Farmer Marketplace — Modern Design System
-   Inspired by goGreen, Growzo & FarmDirect
-   Vibrant emerald & organic green palette, clean card surfaces,
-   modern sans-serif typography, rounded geometry & micro-interactions.
-   ============================================================ */
+/* Smart Farmer Marketplace - Main Stylesheet */
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* Brand Green Palette */
-  --primary:        #15803d;  /* Emerald 700 - trustworthy, vibrant green */
-  --primary-hover:  #166534;  /* Emerald 800 */
-  --primary-light:  #dcfce7;  /* Emerald 100 - soft mint */
-  --primary-subtle: #f0fdf4;  /* Emerald 50 */
-  --primary-dark:   #0f391e;  /* Deep forest green */
-  --accent-lime:    #84cc16;  /* Fresh energetic lime */
-  --accent-gold:    #f59e0b;  /* Warm golden harvest / stars */
-  --accent-orange:  #ea580c;  /* Warm farm orange */
-  --danger:         #ef4444;  /* Crimson alert */
+  /* Brand palette */
+  --primary:        #15803d;
+  --primary-hover:  #166534;
+  --primary-light:  #dcfce7;
+  --primary-subtle: #f0fdf4;
+  --primary-dark:   #0f391e;
+  --accent-lime:    #84cc16;
+  --accent-gold:    #f59e0b;
+  --accent-orange:  #ea580c;
+  --danger:         #ef4444;
   --danger-light:   #fee2e2;
   
-  /* Neutral surfaces */
-  --bg-main:        #f8faf8;  /* Clean slightly tinted organic background */
+  /* Surfaces */
+  --bg-main:        #f8faf8;
   --card-bg:        #ffffff;
   --card-border:    #e5e9e5;
   --card-hover:     #eef3ee;
   
   /* Text */
-  --text-main:      #111827;  /* High contrast readable ink */
-  --text-muted:     #64748b;  /* Slate secondary */
+  --text-main:      #111827;
+  --text-muted:     #64748b;
   --text-light:     #94a3b8;
   
   /* Radii & Shadows */
@@ -214,25 +209,7 @@ button, input, select, textarea {
   background: var(--accent-gold);
 }
 
-.nav-cta-btn {
-  background: var(--primary);
-  color: white;
-  font-weight: 700;
-  padding: 9px 18px;
-  border-radius: var(--radius-full);
-  box-shadow: 0 4px 12px rgba(21, 128, 61, 0.25);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.nav-cta-btn:hover {
-  background: var(--primary-hover);
-  transform: translateY(-1px);
-}
-
-/* ============================================================
-   BUTTONS
-   ============================================================ */
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -324,9 +301,7 @@ button, input, select, textarea {
   width: 100%;
 }
 
-/* ============================================================
-   HERO SECTION (Inspired by Image 1 & 2)
-   ============================================================ */
+/* Hero section */
 .hero-wrapper {
   background: linear-gradient(180deg, #ecfdf5 0%, #f8faf8 100%);
   padding: 48px 0 56px;
@@ -396,30 +371,7 @@ button, input, select, textarea {
   margin-bottom: 32px;
 }
 
-.hero-stats-banner {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  background: white;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  padding: 16px 24px;
-  box-shadow: var(--shadow-sm);
-  max-width: 540px;
-}
-
-.hero-stat-item h4 {
-  font-size: 1.45rem;
-  color: var(--primary);
-  margin-bottom: 2px;
-}
-.hero-stat-item p {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-/* Hero Gallery Grid (Reference Image 1: 4 photos) */
+/* Hero photo highlights */
 .hero-photos-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -463,9 +415,7 @@ button, input, select, textarea {
   text-align: center;
 }
 
-/* ============================================================
-   VALUE PROPOSITION BANNER (Reference Image 1)
-   ============================================================ */
+/* Value propositions */
 .value-props-banner {
   background: linear-gradient(135deg, var(--primary-dark), #14532d);
   color: white;
@@ -515,9 +465,7 @@ button, input, select, textarea {
   font-size: 12px;
 }
 
-/* ============================================================
-   CATEGORIES WITH REAL IMAGES (Reference Image 2)
-   ============================================================ */
+/* Categories */
 .categories-container {
   margin-bottom: 50px;
 }
@@ -681,9 +629,7 @@ button, input, select, textarea {
   box-shadow: 0 2px 8px rgba(21, 128, 61, 0.25);
 }
 
-/* ============================================================
-   PRODUCT CARDS (WITH REAL IMAGES & ZERO ICONS)
-   ============================================================ */
+/* Product cards */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -866,9 +812,7 @@ button, input, select, textarea {
   gap: 6px;
 }
 
-/* ============================================================
-   FARMER STORIES SPOTLIGHT (Reference Image 2 & 5)
-   ============================================================ */
+/* Featured farmers */
 .farmers-section {
   background: white;
   border: 1px solid var(--card-border);
@@ -933,10 +877,7 @@ button, input, select, textarea {
   line-height: 1.4;
 }
 
-/* ============================================================
-   MODALS (Edit Product, Product Details, Checkout)
-   FIXED: Proper display toggling & clean layout
-   ============================================================ */
+/* Modals */
 .modal-overlay {
   display: none; /* Hidden by default */
   position: fixed;
@@ -1054,22 +995,6 @@ button, input, select, textarea {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 14px;
-}
-
-/* Image Upload & Preset Selector Component */
-.image-upload-zone {
-  border: 2px dashed #cbd5e1;
-  border-radius: var(--radius-md);
-  padding: 18px;
-  text-align: center;
-  background: #f8fafc;
-  cursor: pointer;
-  transition: var(--transition);
-  position: relative;
-}
-.image-upload-zone:hover {
-  border-color: var(--primary);
-  background: var(--primary-subtle);
 }
 
 .image-preview-box {
@@ -1609,10 +1534,7 @@ button, input, select, textarea {
     font-size: 2.2rem;
   }
   .nav-links {
-    display: none; /* can be supplemented with mobile toggle */
-  }
-  .hero-stats-banner {
-    grid-template-columns: 1fr;
+    display: none;
   }
   .hero-photos-grid {
     grid-template-columns: 1fr;

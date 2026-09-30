@@ -4,19 +4,29 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Smart Farmer Marketplace — Fresh from the Farm, Direct to Your Home</title>
+<meta name="description" content="Smart Farmer Marketplace connects urban households directly with verified local farmers for fresh, organic harvest delivered to your doorstep." />
+<meta name="keywords" content="smart farmer marketplace, farm direct, organic vegetables, local produce, fresh fruits" />
+<meta property="og:title" content="Smart Farmer Marketplace — Fresh from the Farm, Direct to Your Home" />
+<meta property="og:description" content="Shop daily farm essentials direct from verified local growers with fair pricing and fast doorstep delivery." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Smart Farmer Marketplace" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Smart Farmer Marketplace — Fresh from the Farm" />
+<meta name="twitter:description" content="Direct from local farmers to your home. 100% direct produce with zero middlemen." />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>" />
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- TOP ANNOUNCEMENT BAR -->
+<!-- Announcement bar -->
 <div class="top-announcement">
   <div class="wrap">
     <span>🌱 100% Direct from Local Farmers &bull; Zero Middlemen &bull; Fair Prices for Growers &amp; Customers</span>
   </div>
 </div>
 
-<!-- SITE NAVIGATION -->
-<nav class="site-nav">
+<!-- Navigation -->
+<nav class="site-nav" aria-label="Main navigation">
   <div class="wrap nav-container">
     <a href="index.html" class="brand-logo">
       <div class="brand-icon-box">🌱</div>
@@ -40,11 +50,10 @@
   </div>
 </nav>
 
-<!-- HERO SECTION (Inspired by Reference Images 1 & 2) -->
+<!-- Hero Section -->
 <section class="hero-wrapper">
   <div class="wrap">
     <div style="max-width:720px;text-align:left;">
-      <!-- Pill Badge with Farmer Portraits -->
       <div class="hero-pill-badge">
         <div class="avatar-cluster">
           <img src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?auto=format&fit=crop&w=100&q=80" alt="Farmer" />
@@ -61,22 +70,20 @@
         Skip supermarket markups and multi-week cold storage. Connect directly with trusted local farmers and enjoy produce picked within hours of your order.
       </p>
 
-      <!-- CTAs & Search -->
       <div class="hero-cta-group">
         <a href="#marketplace" class="btn btn-primary btn-lg">Explore Farm Harvest &darr;</a>
         <a href="#howItWorks" class="btn btn-secondary btn-lg">&#9654; How It Works</a>
       </div>
 
-      <!-- Search Bar -->
-      <div class="filter-search-bar" style="max-width:540px;">
+      <div class="filter-search-bar" role="search" style="max-width:540px;">
         <div class="search-input-wrapper">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input id="searchInput" type="text" placeholder="Search tomatoes, mangoes, organic rice, fresh milk..." />
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="searchInput" type="text" placeholder="Search tomatoes, mangoes, organic rice, fresh milk..." aria-label="Search produce" />
         </div>
       </div>
     </div>
 
-    <!-- 4-Photo Real Farm Photo Cards (Reference Image 1) -->
+    <!-- Farm photo highlights -->
     <div class="hero-photos-grid">
       <div class="hero-photo-card">
         <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80" alt="Planting in Soil" />
@@ -98,10 +105,10 @@
   </div>
 </section>
 
-<!-- MAIN CONTENT WRAPPER -->
+<!-- Main content -->
 <main class="wrap section-spacing">
 
-  <!-- HOW IT WORKS 3-STEP BANNER (Reference Image 1) -->
+  <!-- How It Works -->
   <section id="howItWorks" class="value-props-banner">
     <div>
       <div style="font-size:12px;font-weight:700;color:var(--accent-lime);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Farm to Table Protocol</div>
@@ -130,7 +137,7 @@
     </div>
   </section>
 
-  <!-- CATEGORIES WITH REAL IMAGES (Reference Image 2) -->
+  <!-- Categories -->
   <section class="categories-container">
     <div class="section-head">
       <div>
@@ -140,11 +147,10 @@
       <a href="product.html" style="font-weight:700;color:var(--primary);font-size:14px;">View All &rarr;</a>
     </div>
 
-    <!-- Circular Real Photo Category Cards -->
     <div id="categoriesContainer" class="categories-grid"></div>
   </section>
 
-  <!-- VERIFIED FARMER STORIES SPOTLIGHT (Reference Images 2 & 5) -->
+  <!-- Featured Farmers -->
   <section class="farmers-section">
     <div class="section-head">
       <div>
@@ -159,7 +165,7 @@
     <div id="farmersContainer" class="farmer-cards-grid"></div>
   </section>
 
-  <!-- TODAY'S FRESH HARVEST CATALOG -->
+  <!-- Produce Catalog -->
   <section id="marketplace">
     <div class="section-head">
       <div>
@@ -167,10 +173,9 @@
         <p class="section-head-subtitle">Actual crop photos, current field rates, and live available stock</p>
       </div>
 
-      <!-- Sorting Filter -->
       <div style="display:flex;align-items:center;gap:10px;">
         <span style="font-size:13px;font-weight:600;color:#64748b;">Sort:</span>
-        <select id="sortFilter" class="filter-select">
+        <select id="sortFilter" class="filter-select" aria-label="Sort produce">
           <option value="default">Featured Harvests</option>
           <option value="price-low">Price: Low to High</option>
           <option value="price-high">Price: High to Low</option>
@@ -180,23 +185,21 @@
       </div>
     </div>
 
-    <!-- Category filter chips -->
     <div id="categoryChips" class="chips-row"></div>
 
-    <!-- Product Cards Grid (Real produce photos, ZERO icons) -->
     <div id="productGrid" class="products-grid"></div>
   </section>
 </main>
 
-<!-- PRODUCT DETAIL MODAL -->
-<div id="productModal" class="modal-overlay" style="display:none;">
+<!-- Product Detail Modal -->
+<div id="productModal" class="modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="productModalContent">
   <div class="modal-dialog large" style="position:relative;">
-    <button type="button" class="modal-close-btn" onclick="closeProductModal()">×</button>
+    <button type="button" class="modal-close-btn" onclick="closeProductModal()" aria-label="Close product details">×</button>
     <div id="productModalContent"></div>
   </div>
 </div>
 
-<!-- SITE FOOTER -->
+<!-- Footer -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -252,7 +255,6 @@
   renderGrid("productGrid");
   initSearchAndFilters();
 
-  // Close modal when clicking backdrop or pressing Escape
   const modalEl = document.getElementById("productModal");
   if (modalEl) {
     modalEl.addEventListener("click", (e) => {

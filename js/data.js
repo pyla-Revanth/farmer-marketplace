@@ -1,7 +1,4 @@
-/* ============================================================
-   data.js — Seed Data, Real Produce Images, & Store Helpers
-   Shared across all pages. Real photos, zero icons.
-   ============================================================ */
+// Data storage and initialization
 
 const STORE = {
   users: "sfm_users",
@@ -39,7 +36,7 @@ const CATEGORIES_DATA = [
   { name: "Dairy", image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=600&q=80", count: "Farm fresh" },
 ];
 
-/* Verified Real Farmers (Reference Image 2 & 5) */
+// Sample farmer profiles
 const FARMERS_DATA = [
   {
     id: 1,
@@ -97,9 +94,8 @@ function seedIfEmpty() {
     ]);
   }
 
-  // Seed Products with REAL photos (not icons!)
+  // Seed default products if not present
   const existingProds = readStore(STORE.products, null);
-  // Migrate if empty or if existing data still uses icon keys without real image URLs
   const needsImageMigration = !existingProds || existingProds.some(p => !p.image || p.image.length < 5);
 
   if (needsImageMigration) {

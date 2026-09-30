@@ -4,12 +4,22 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Produce Catalog, Basket &amp; Orders — Smart Farmer Marketplace</title>
+<meta name="description" content="Browse fresh seasonal produce, manage your grocery basket, track farm orders, and save your favorite harvest items on Smart Farmer Marketplace." />
+<meta name="keywords" content="smart farmer catalog, fresh vegetables, seasonal fruits, organic produce, farm order tracking" />
+<meta property="og:title" content="Produce Catalog, Basket &amp; Orders — Smart Farmer Marketplace" />
+<meta property="og:description" content="Browse authentic seasonal vegetables, fruits, grains, and farm dairy directly from local growers." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Smart Farmer Marketplace" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Produce Catalog — Smart Farmer Marketplace" />
+<meta name="twitter:description" content="Farm-fresh produce direct from local grower stocks." />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>" />
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- SITE NAVIGATION -->
-<nav class="site-nav">
+<!-- Navigation -->
+<nav class="site-nav" aria-label="Main navigation">
   <div class="wrap nav-container">
     <a href="index.html" class="brand-logo">
       <div class="brand-icon-box">🌱</div>
@@ -19,25 +29,25 @@
 
     <div class="nav-links">
       <a href="index.html" class="nav-link">Home</a>
-      <a href="javascript:void(0)" class="nav-link active" id="navLinkCatalog" onclick="switchProductTab('catalog')">Marketplace</a>
-      <a href="javascript:void(0)" class="nav-link" id="navLinkWishlist" onclick="switchProductTab('wishlist')">
+      <a href="#catalog" class="nav-link active" id="navLinkCatalog" onclick="switchProductTab('catalog')">Marketplace</a>
+      <a href="#wishlist" class="nav-link" id="navLinkWishlist" onclick="switchProductTab('wishlist')">
         ❤️ Wishlist <span id="navWishCount" class="nav-badge gold">0</span>
       </a>
-      <a href="javascript:void(0)" class="nav-link" id="navLinkCart" onclick="switchProductTab('cart')">
+      <a href="#cart" class="nav-link" id="navLinkCart" onclick="switchProductTab('cart')">
         🛒 Basket <span id="navCartCount" class="nav-badge">0</span>
       </a>
-      <a href="javascript:void(0)" class="nav-link" id="navLinkOrders" onclick="switchProductTab('orders')">📦 My Orders</a>
+      <a href="#orders" class="nav-link" id="navLinkOrders" onclick="switchProductTab('orders')">📦 My Orders</a>
     </div>
 
     <div id="navAuthSlot" style="display:flex;align-items:center;gap:12px;"></div>
   </div>
 </nav>
 
-<!-- MAIN APP CONTAINER -->
+<!-- Main content -->
 <main class="wrap section-spacing">
 
-  <!-- TAB SELECTION CHIPS -->
-  <div style="display:flex;gap:10px;margin-bottom:32px;border-bottom:1px solid var(--card-border);padding-bottom:14px;overflow-x:auto;">
+  <!-- Tab navigation -->
+  <nav aria-label="Marketplace tabs" style="display:flex;gap:10px;margin-bottom:32px;border-bottom:1px solid var(--card-border);padding-bottom:14px;overflow-x:auto;">
     <button type="button" id="tabBtnCatalog" class="btn btn-primary" onclick="switchProductTab('catalog')">
       🌿 All Produce Catalog
     </button>
@@ -50,14 +60,14 @@
     <button type="button" id="tabBtnOrders" class="btn btn-outline" onclick="switchProductTab('orders')">
       📦 Order Tracking
     </button>
-  </div>
+  </nav>
 
-  <!-- SINGLE PRODUCT DETAIL VIEW (IF ID PRESENT) -->
+  <!-- Single product view -->
   <div id="singleProductView" style="display:none;margin-bottom:40px;">
     <div id="singleProductContainer"></div>
   </div>
 
-  <!-- TAB 1: ALL PRODUCE CATALOG -->
+  <!-- Produce catalog tab -->
   <section id="tabPaneCatalog">
     <div class="section-head">
       <div>
@@ -65,10 +75,9 @@
         <p class="section-head-subtitle">Authentic seasonal vegetables, fruits, grains and farm dairy with actual field photography</p>
       </div>
 
-      <!-- Sorting Filter -->
       <div style="display:flex;align-items:center;gap:10px;">
         <span style="font-size:13px;font-weight:600;color:#64748b;">Sort:</span>
-        <select id="sortFilter" class="filter-select">
+        <select id="sortFilter" class="filter-select" aria-label="Sort produce">
           <option value="default">Featured First</option>
           <option value="price-low">Price: Low to High</option>
           <option value="price-high">Price: High to Low</option>
@@ -78,22 +87,22 @@
       </div>
     </div>
 
-    <!-- Live Search -->
-    <div class="filter-search-bar" style="margin-bottom:20px;">
+    <!-- Search bar -->
+    <div class="filter-search-bar" role="search" style="margin-bottom:20px;">
       <div class="search-input-wrapper">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input id="searchInput" type="text" placeholder="Search tomatoes, mangoes, organic rice, fresh milk, carrots..." />
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="searchInput" type="text" placeholder="Search tomatoes, mangoes, organic rice, fresh milk, carrots..." aria-label="Search produce catalog" />
       </div>
     </div>
 
     <!-- Category filter chips -->
     <div id="categoryChips" class="chips-row"></div>
 
-    <!-- Catalog Grid -->
+    <!-- Catalog grid -->
     <div id="productGrid" class="products-grid"></div>
   </section>
 
-  <!-- TAB 2: SHOPPING BASKET / CART -->
+  <!-- Shopping basket tab -->
   <section id="tabPaneCart" style="display:none;">
     <div class="section-head">
       <div>
@@ -114,7 +123,7 @@
         </div>
       </div>
 
-      <!-- Order Summary Card -->
+      <!-- Order summary card -->
       <div class="order-summary-card">
         <h3 style="font-size:1.3rem;margin-bottom:16px;color:var(--primary-dark);">Order Summary</h3>
         
@@ -146,7 +155,7 @@
     </div>
   </section>
 
-  <!-- TAB 3: WISHLIST -->
+  <!-- Wishlist tab -->
   <section id="tabPaneWishlist" style="display:none;">
     <div class="section-head">
       <div>
@@ -157,7 +166,7 @@
     <div id="wishlistContainer" class="products-grid"></div>
   </section>
 
-  <!-- TAB 4: ORDERS TRACKING -->
+  <!-- Orders tracking tab -->
   <section id="tabPaneOrders" style="display:none;">
     <div class="section-head">
       <div>
@@ -169,35 +178,35 @@
   </section>
 </main>
 
-<!-- CHECKOUT MODAL -->
-<div id="checkoutModal" class="modal-overlay" style="display:none;">
+<!-- Checkout modal -->
+<div id="checkoutModal" class="modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="checkoutModalTitle">
   <div class="modal-dialog">
-    <button type="button" class="modal-close-btn" onclick="closeCheckoutModal()">×</button>
+    <button type="button" class="modal-close-btn" onclick="closeCheckoutModal()" aria-label="Close checkout modal">×</button>
     
     <div class="modal-header">
-      <h3>Complete Your Farm Order</h3>
+      <h3 id="checkoutModalTitle">Complete Your Farm Order</h3>
       <p>Enter your delivery details to dispatch your fresh morning harvest.</p>
     </div>
 
     <form id="checkoutForm" onsubmit="handlePlaceOrder(event)">
       <div class="form-group">
-        <label>Full Name *</label>
+        <label for="orderCustName">Full Name *</label>
         <input id="orderCustName" class="form-input" placeholder="e.g. Priya Nair" required />
       </div>
 
       <div class="form-group">
-        <label>Contact Phone Number *</label>
+        <label for="orderCustPhone">Contact Phone Number *</label>
         <input id="orderCustPhone" type="tel" class="form-input" placeholder="e.g. +91 98450 12345" required />
       </div>
 
       <div class="form-group">
-        <label>Delivery Address *</label>
+        <label for="orderCustAddress">Delivery Address *</label>
         <textarea id="orderCustAddress" class="form-textarea" rows="3" placeholder="House/Flat number, Street, Landmark, Pincode" required></textarea>
       </div>
 
       <div class="form-row" style="margin-bottom:16px;">
         <div class="form-group">
-          <label>Preferred Delivery Slot</label>
+          <label for="orderCustSlot">Preferred Delivery Slot</label>
           <select id="orderCustSlot" class="form-select">
             <option>Early Morning (6:30 AM - 9:30 AM)</option>
             <option>Afternoon (12:00 PM - 3:00 PM)</option>
@@ -205,7 +214,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Payment Method</label>
+          <label for="orderPaymentMethod">Payment Method</label>
           <select id="orderPaymentMethod" class="form-select">
             <option>Cash on Delivery (Pay after inspecting produce)</option>
             <option>UPI / Online Transfer (Demo)</option>
@@ -225,15 +234,15 @@
   </div>
 </div>
 
-<!-- PRODUCT DETAIL MODAL (FOR CATALOG QUICK VIEW) -->
-<div id="productModal" class="modal-overlay" style="display:none;">
+<!-- Product detail modal -->
+<div id="productModal" class="modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="productModalContent">
   <div class="modal-dialog large" style="position:relative;">
-    <button type="button" class="modal-close-btn" onclick="closeProductModal()">×</button>
+    <button type="button" class="modal-close-btn" onclick="closeProductModal()" aria-label="Close product details">×</button>
     <div id="productModalContent"></div>
   </div>
 </div>
 
-<!-- SITE FOOTER -->
+<!-- Footer -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-bottom">
@@ -279,7 +288,6 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  // Handle URL hash or param
   const hash = window.location.hash.replace("#", "");
   if (hash === "cart" || hash === "wishlist" || hash === "orders") {
     switchProductTab(hash);
@@ -297,7 +305,6 @@
     renderGrid("productGrid");
   }
 
-  // Backdrop modal close
   const checkoutModalEl = document.getElementById("checkoutModal");
   if (checkoutModalEl) {
     checkoutModalEl.addEventListener("click", (e) => {

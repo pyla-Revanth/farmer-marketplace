@@ -1,7 +1,4 @@
-/* ============================================================
-   cart.js — Shopping Cart, Wishlist, Checkout Modal & Orders
-   Integrates full features from xx.html into modern UI architecture
-   ============================================================ */
+// Shopping cart, wishlist, checkout, and order tracking
 
 function renderCart() {
   const body = document.getElementById("cartBody");
@@ -42,7 +39,7 @@ function renderCart() {
   const grandTotal = subtotal + deliveryFee;
 
   body.innerHTML = items.map((r) => `
-    <div class="cart-item-card">
+    <article class="cart-item-card">
       <div class="cart-item-info">
         <img class="cart-item-img" src="${r.product.image || DEFAULT_PRODUCT_IMG}" onerror="this.src='${DEFAULT_PRODUCT_IMG}'" alt="${r.product.name}" />
         <div>
@@ -63,7 +60,7 @@ function renderCart() {
           🗑️
         </button>
       </div>
-    </div>
+    </article>
   `).join("");
 
   if (subtotalEl) subtotalEl.textContent = `₹${subtotal}`;
@@ -115,9 +112,7 @@ function removeFromCart(productId) {
   toast("Removed from your fresh basket.");
 }
 
-/* ============================================================
-   CHECKOUT MODAL & ORDER PLACEMENT
-   ============================================================ */
+// Checkout modal & order placement
 function openCheckoutModal() {
   const cart = readStore(STORE.cart, []);
   if (cart.length === 0) {
@@ -240,9 +235,7 @@ function handlePlaceOrder(e) {
   }
 }
 
-/* ============================================================
-   RENDER ORDERS WITH 5-STEP TRACKER
-   ============================================================ */
+// Order history and tracking
 function renderOrdersList() {
   const container = document.getElementById("ordersContainer");
   if (!container) return;
@@ -315,9 +308,7 @@ function renderOrdersList() {
   }).join("");
 }
 
-/* ============================================================
-   RENDER WISHLIST WITH DIRECT ADD-TO-CART
-   ============================================================ */
+// Saved wishlist
 function renderWishlistGrid() {
   const container = document.getElementById("wishlistContainer");
   if (!container) return;
