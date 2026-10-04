@@ -200,3 +200,116 @@ function handleAddProduct(e, user) {
 
   renderDashboardStats(user);
 }
+
+/* ============================================================
+   Farmer Support Schemes & Modal Logic
+   ============================================================ */
+
+const FARMER_SUPPORT_SCHEMES = {
+  pmfby: {
+    id: "pmfby",
+    scheme: "PMFBY",
+    fullName: "Pradhan Mantri Fasal Bima Yojana",
+    title: "Crop Insurance",
+    category: "Crop Insurance & Financial Security",
+    description: "Crop insurance support for eligible farmers against covered crop losses and risks.",
+    explanation: "Pradhan Mantri Fasal Bima Yojana (PMFBY) provides comprehensive insurance coverage and financial security to farmers facing crop loss or damage arising from unforeseen events, natural calamities, pests, and adverse weather conditions. It protects farmers from income distress and encourages modern agricultural practices.",
+    url: "https://pmfby.gov.in/"
+  },
+  pmkusum: {
+    id: "pmkusum",
+    scheme: "PM-KUSUM",
+    fullName: "Pradhan Mantri Kisan Urja Suraksha evam Utthaan Mahabhiyan",
+    title: "Solar Support",
+    category: "Solar & Renewable Energy",
+    description: "Explore support related to eligible solar agricultural pumps and solarisation.",
+    explanation: "The PM-KUSUM scheme supports farmers in installing standalone solar-powered agriculture pumps, solarising existing grid-connected agricultural pumps, and setting up decentralized solar power projects on farm lands to ensure energy independence and water security.",
+    url: "https://pmkusum.mnre.gov.in/"
+  },
+  enam: {
+    id: "enam",
+    scheme: "e-NAM",
+    fullName: "National Agriculture Market",
+    title: "Market Support",
+    category: "Agricultural Marketing & Price Discovery",
+    description: "Explore agricultural market information, price discovery and market access.",
+    explanation: "e-NAM is an all-India electronic trading network that connects physical APMC wholesale mandis into a unified digital market. It empowers farmers with real-time price discovery, transparent digital auctions, and direct market access to buyers nationwide.",
+    url: "https://enam.gov.in/"
+  }
+};
+
+function openFarmerSupportModal(schemeKey) {
+  const scheme = FARMER_SUPPORT_SCHEMES[schemeKey];
+  if (!scheme) return;
+
+  const modal = document.getElementById("supportModal");
+  if (!modal) return;
+
+  const schemeEl = document.getElementById("supportModalScheme");
+  const titleEl = document.getElementById("supportModalTitle");
+  const categoryEl = document.getElementById("supportModalCategory");
+  const explanationEl = document.getElementById("supportModalExplanation");
+  const linkEl = document.getElementById("supportModalGovLink");
+
+  if (schemeEl) schemeEl.textContent = `${scheme.scheme} — ${scheme.fullName}`;
+  if (titleEl) titleEl.textContent = scheme.title;
+  if (categoryEl) categoryEl.textContent = scheme.category;
+  if (explanationEl) explanationEl.textContent = scheme.explanation;
+  if (linkEl) {
+    linkEl.href = scheme.url;
+    linkEl.setAttribute("aria-label", `View official government information for ${scheme.scheme}`);
+  }
+
+  modal.classList.add("active");
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+function closeFarmerSupportModal() {
+  const modal = document.getElementById("supportModal");
+  if (modal) {
+    modal.classList.remove("active");
+    modal.style.display = "none";
+  }
+  document.body.style.overflow = "";
+}
+
+function initFarmerSupportModal() {
+  const modal = document.getElementById("supportModal");
+  if (!modal) return;
+
+  const buttons = document.querySelectorAll(".support-learn-btn");
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      openFarmerSupportModal(btn.dataset.scheme);
+    });
+  });
+
+  const closeX = document.getElementById("supportModalCloseX");
+  if (closeX) {
+    closeX.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeFarmerSupportModal();
+    });
+  }
+
+  const closeBtn = document.getElementById("supportModalCloseBtn");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeFarmerSupportModal();
+    });
+  }
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeFarmerSupportModal();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.style.display !== "none") {
+      closeFarmerSupportModal();
+    }
+  });
+}
