@@ -23,7 +23,7 @@ const PRESET_PRODUCE_IMAGES = [
   { label: "Fresh Milk", url: "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=800&q=80" },
   { label: "Papaya", url: "https://images.unsplash.com/photo-1517282009859-f000ec3b26fe?auto=format&fit=crop&w=800&q=80" },
   { label: "Strawberries", url: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=800&q=80" },
-  { label: "Green Gram", url: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80" },
+  { label: "Green Gram", url: "https://images.unsplash.com/photo-1788629531235-fe89db622984?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
   { label: "Bell Peppers", url: "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=800&q=80" },
 ];
 
@@ -32,7 +32,7 @@ const CATEGORIES_DATA = [
   { name: "Vegetables", image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80", count: "12+ varieties" },
   { name: "Fruits", image: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=600&q=80", count: "8+ varieties" },
   { name: "Grains", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80", count: "6+ varieties" },
-  { name: "Pulses", image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80", count: "5+ varieties" },
+  { name: "Pulses", image: "https://images.unsplash.com/photo-okSEa77XTS4?auto=format&fit=crop&w=600&q=80", count: "5+ varieties" },
   { name: "Dairy", image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=600&q=80", count: "Farm fresh" },
 ];
 
@@ -62,7 +62,7 @@ const FARMERS_DATA = [
     farm: "Sun Valley Natural Co-op",
     location: "Ooty Valley",
     experience: "8 years farming",
-    photo: "https://images.unsplash.com/photo-1592417817098-8f3d6910985b?auto=format&fit=crop&w=400&q=80",
+    photo: "https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?auto=format&fit=crop&w=400&q=80",
     bio: "Pioneer in zero-chemical hydroponic strawberries, fresh baby carrots and bell peppers.",
   },
 ];
@@ -241,7 +241,7 @@ function seedIfEmpty() {
         farmerId: 1,
         farmerName: "Ramesh Yadav",
         farmLocation: "Guntur Valley",
-        image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
+        image: "https://images.unsplash.com/photo-1788629531235-fe89db622984?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description: "Whole green moong pulses. High in protein, easy to sprout, grown without chemical pest controls.",
         harvestDate: "Fresh Harvest Season",
         reviews: []
